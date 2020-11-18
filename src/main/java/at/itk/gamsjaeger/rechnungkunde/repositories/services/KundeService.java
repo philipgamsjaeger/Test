@@ -43,8 +43,6 @@ public class KundeService {
    }
 
 
-
-
     public Rechnung addRechnungForKunde(Long id, Rechnung rechnung) throws Exception{
         Optional<Kunde> opkunde = kundeRepository.findById(id);
         if (opkunde.isPresent()){

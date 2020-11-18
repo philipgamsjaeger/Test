@@ -25,7 +25,7 @@ public class RechnungService {
         return rechnungRepository.findAll();
     }
 
-    public Optional<Rechnung> getKundeById(Long id){
+    public Optional<Rechnung> getRechnungById(Long id){
         return rechnungRepository.findById(id);
     }
 

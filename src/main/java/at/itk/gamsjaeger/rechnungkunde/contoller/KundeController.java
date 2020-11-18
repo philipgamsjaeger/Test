@@ -42,6 +42,14 @@ public class KundeController {
         return kundeService.addKunde(kunde);
     }
 
+    @DeleteMapping("kunde/{id}")
+    public ResponseEntity<?> deleteKundeById(@PathVariable Long id){
+        kundeService.deleteKundeByID(id);
+        return ResponseEntity.ok("Kunde wurde gelöscht");
+    }
+
+
+    //@PostMapping("kunde/{id}/addrechnung"){}
 
 
 }

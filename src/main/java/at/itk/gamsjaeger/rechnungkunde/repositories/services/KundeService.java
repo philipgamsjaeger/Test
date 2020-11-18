@@ -1,6 +1,7 @@
 package at.itk.gamsjaeger.rechnungkunde.repositories.services;
 
 import at.itk.gamsjaeger.rechnungkunde.models.Kunde;
+import at.itk.gamsjaeger.rechnungkunde.models.Rechnung;
 import at.itk.gamsjaeger.rechnungkunde.repositories.KundeRepository;
 import at.itk.gamsjaeger.rechnungkunde.repositories.RechnungRepository;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,24 @@ public class KundeService {
 
     public Kunde addKunde (Kunde kunde){
         return kundeRepository.save(kunde);
+    }
+
+   public void deleteKundeByID (Long id){
+        kundeRepository.deleteById(id);
+   }
+
+
+
+
+    public Rechnung addRechnungForKunde(Long id, Rechnung rechnung) throws Exception{
+        Optional<Kunde> opkunde = kundeRepository.findById(id);
+        if (opkunde.isPresent()){
+            Kunde kunde = opkunde.get();
+            rechnung.setKunde(kunde);
+            return rechnung;
+        }else{
+            throw new Exception();
+        }
     }
 
 

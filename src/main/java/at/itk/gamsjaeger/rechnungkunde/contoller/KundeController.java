@@ -8,9 +8,11 @@ import at.itk.gamsjaeger.rechnungkunde.repositories.services.RechnungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class KundeController {
@@ -31,5 +33,12 @@ public class KundeController {
     public List<Kunde> getAllKunden(){
         return kundeService.getAllKunden();
     }
+
+    @GetMapping("/kunde/{id}")
+    public Kunde getKundeById (@PathVariable Long id){
+        return kundeService.getKundeById(id).get();
+    }
+
+
 
 }

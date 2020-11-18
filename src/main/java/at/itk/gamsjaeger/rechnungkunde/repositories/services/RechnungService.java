@@ -28,10 +28,15 @@ public class RechnungService {
     public Optional<Rechnung> getRechnungById(Long id){
         return rechnungRepository.findById(id);
     }
-
-    public Rechnung addRechnung (Rechnung rechnung){
+    public Rechnung addRechnung(Long kundenId, Rechnung rechnung){
+        Optional<Kunde> kunde = kundeRepository.findById(kundenId);
+        if(kunde.isPresent()){
+            rechnung.setKunde(kunde.get());
+            return rechnungRepository.save(rechnung);
+        }
         return rechnungRepository.save(rechnung);
     }
+
 
     public void deleteRechnungByID (Long id){
         rechnungRepository.deleteById(id);

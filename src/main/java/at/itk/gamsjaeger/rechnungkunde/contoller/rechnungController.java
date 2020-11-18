@@ -6,6 +6,7 @@ import at.itk.gamsjaeger.rechnungkunde.repositories.services.RechnungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,10 +24,11 @@ public class rechnungController {
              return rechnungService.getAllRechnungen();
     }
 
-    @GetMapping("rechnung/{id}")
+    @GetMapping("/rechnung/{id}")
         public Rechnung getRechnungById(@PathVariable Long id) {
            return rechnungService.getRechnungById(id).get();
     }
+
 
 
 

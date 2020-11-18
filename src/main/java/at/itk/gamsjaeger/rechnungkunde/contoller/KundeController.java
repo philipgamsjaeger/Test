@@ -7,9 +7,7 @@ import at.itk.gamsjaeger.rechnungkunde.repositories.services.KundeService;
 import at.itk.gamsjaeger.rechnungkunde.repositories.services.RechnungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +35,11 @@ public class KundeController {
     @GetMapping("/kunde/{id}")
     public Kunde getKundeById (@PathVariable Long id){
         return kundeService.getKundeById(id).get();
+    }
+
+    @PostMapping("/kunde")
+    public Kunde createKunde (@RequestBody Kunde kunde) {
+        return kundeService.addKunde(kunde);
     }
 
 

@@ -33,6 +33,10 @@ public class KundeService {
         return kundeRepository.findById(id);
     }
 
+    public Kunde addKunde (Kunde kunde){
+        return kundeRepository.save(kunde);
+    }
+
 
 
 
